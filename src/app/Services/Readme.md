@@ -1,0 +1,7 @@
+Los servicios son componentes de software que se encargan de realizar una tarea específica dentro de una aplicación. Estos componentes se diseñan para ser reutilizables y se pueden invocar desde varios puntos de la aplicación, lo que les da un alto grado de independencia y abstracción.
+
+Un ejemplo de servicio en una aplicación de e-commerce podría ser un servicio de pago que se encarga de procesar pagos a través de diversos gateways de pago. Este servicio podría ser invocado desde varios puntos de la aplicación, como desde el carrito de compras, desde la página de confirmación de pedido, etc.
+
+El servicio de pago podría tener una interfaz de programación de aplicaciones (API) que exponga métodos para iniciar un pago, obtener información sobre un pago, etc. Esta API permitiría a los desarrolladores implementar fácilmente el proceso de pago en su aplicación, sin tener que preocuparse por los detalles técnicos de cómo se realiza el pago.
+
+Los servicios son útiles para separar la lógica de negocio de la lógica de la aplicación, lo que facilita el mantenimiento y la escalabilidad de la aplicación. También pueden ser reutilizados en diferentes aplicaciones, lo que reduce la cantidad de código duplicado y mejora la calidad del software.
