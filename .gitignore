@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+
+# Environment variables
+.env
+
+# Node.js modules
+node_modules
+
+# Debug files
+*.debug
+
+# Test files
+__tests__
+*.test.js
+*.spec.js
+
+# Coverage reports
+coverage
+
+# Build files
+dist
+
+# Documentation files
+docs
+
+# Config files
+config
