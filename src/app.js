@@ -1,18 +1,16 @@
 'use strict';
 
 import Fastify from 'fastify';
-import * as Helper from './helpers/helpers.js';
-import * as Cors from './config/cors-config.js';
+import * as Config from './config/config.js';
 import env from './config/env-config.js';
 import log from './config/log-config.js';
 
-const { ENVIRONMENT } = env;
+const { ENVIRONMENT, PORT } = env;
 
 const app = Fastify({
   logger: log.config[ENVIRONMENT] ?? true // defaults to true if no entry matches in the map
 });
 
-Helper.set(app, env);
-Cors.set(app);
+Config.set(app, env);
 
-await app.listen({ port: 3000 })
+await app.listen({ port: PORT })
