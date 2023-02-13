@@ -14,4 +14,6 @@ If you need help or support for this project, please feel free to contact the de
 ## Developer
 Leonardo Salas is a systems engineer and specializes in full-stack development. In addition to developing and selling WordPress websites through his official website, Immersion Interactive.
 
+<img src="https://immersioninteractive.com/wp-content/uploads/2022/03/immersion-interactive-logo-fullmdpi.png" alt="Immersion Interactive">
+
 # Thank you for your interest in this project!
