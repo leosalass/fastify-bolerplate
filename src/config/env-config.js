@@ -24,6 +24,7 @@ export default {
     MONGO_DB_USER: process.env.MONGO_DB_USER,
     MONGO_DB_PASSWORD: process.env.MONGO_DB_PASSWORD,
 
+    ATLAS_DB_NAME: process.env.ATLAS_DB_NAME,
     ATLAS_USER: process.env.ATLAS_USER,
     ATLAS_PASSWORD: process.env.ATLAS_PASSWORD,
     ATLAS_CLUSTER: process.env.ATLAS_CLUSTER,

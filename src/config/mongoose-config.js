@@ -18,7 +18,7 @@ export function set(app) {
           ? `mongodb://${app.env.MONGO_DB_USER}:${app.env.MONGO_DB_PASSWORD}@${app.env.MONGO_DB_HOST}:${app.env.MONGO_DB_PORT}/${app.env.MONGO_DB_NAME}`
           : `mongodb://${app.env.MONGO_DB_HOST}:${app.env.MONGO_DB_PORT}/${app.env.MONGO_DB_NAME}`;
     } else {
-      connectionString = `mongodb+srv://${app.env.ATLAS_USER}:${app.env.ATLAS_PASSWORD}@${app.env.ATLAS_CLUSTER}/?${app.env.ATLAS_OPTIONS}`;
+      connectionString = `mongodb+srv://${app.env.ATLAS_USER}:${app.env.ATLAS_PASSWORD}@${app.env.ATLAS_CLUSTER}/${app.env.ATLAS_DB_NAME}?${app.env.ATLAS_OPTIONS}`;
     }
 
     try {
