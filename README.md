@@ -1,3 +1,5 @@
+<img src="https://immersioninteractive.com/wp-content/uploads/2022/03/immersion-interactive-logo-fullmdpi.png" alt="Immersion Interactive">
+
 # User API in Fastify.js
 This is a project of a user API built with Fastify.js and connected to MongoDB, either locally or on Atlas. Currently, the project includes basic CRUD functionality for users. In the future, email validation, phone number validation, and two-factor authentication (2FA) are planned to be implemented.
 
@@ -13,7 +15,5 @@ If you need help or support for this project, please feel free to contact the de
 
 ## Developer
 Leonardo Salas is a systems engineer and specializes in full-stack development. In addition to developing and selling WordPress websites through his official website, Immersion Interactive.
-
-<img src="https://immersioninteractive.com/wp-content/uploads/2022/03/immersion-interactive-logo-fullmdpi.png" alt="Immersion Interactive">
 
 # Thank you for your interest in this project!
