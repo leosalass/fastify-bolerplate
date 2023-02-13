@@ -22,7 +22,7 @@ Las siguientes dependencias están incluidas en el archivo `package.json` de est
 Créditos a los autores de los plugins por facilitar el desarrollo de este proyecto.
 
 ## Desarrollador
-Leonardo Salas es un ingeniero de sistemas y se especializa en desarrollo full-stack. Además de desarrollar y vender sitios web en WordPress a través de su sitio web oficial, Immersion Interactive.
+Leonardo Salas es un ingeniero de sistemas y se especializa en desarrollo full-stack. Además de desarrollar y vender sitios web en WordPress a través de su sitio web oficial, [Immersion Interactive](https://immersioninteractive.com/).
 
 ## Soporte
-Si necesita ayuda o soporte para este proyecto, no dude en contactar al desarrollador, puede comunicarse con él a través de los canales de soporte en su sitio web oficial, [Immersion Interactive](https://immersioninteractive.com/).
+Si necesita ayuda o soporte para este proyecto, no dude en contactar al desarrollador, puede comunicarse con él a través de los canales de soporte en su sitio web oficial.

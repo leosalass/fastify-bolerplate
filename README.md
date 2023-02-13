@@ -21,9 +21,9 @@ The following dependencies are included in the `package.json` file of this proje
 Credits to the authors of the plugins for facilitating the development of this project.
 
 ## Developer
-Leonardo Salas is a systems engineer and specializes in full-stack development. In addition to developing and selling WordPress websites through his official website, Immersion Interactive.
+Leonardo Salas is a systems engineer and specializes in full-stack development. In addition to developing and selling WordPress websites through his official website, [Immersion Interactive](https://immersioninteractive.com/).
 
 ## Support
-If you need help or support for this project, please feel free to contact the developer. You can reach him through the support channels on his official website, [Immersion Interactive](https://immersioninteractive.com/).
+If you need help or support for this project, please feel free to contact the developer. You can reach him through the support channels on his official website.
 
 # Thank you for your interest in this project!
