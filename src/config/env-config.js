@@ -13,14 +13,19 @@ dotenv.config({
     path: envPath
 });
 
-const LOG_FILE = process.env.LOG_FILE;
-const APP_NAME = process.env.APP_NAME;
-const PORT = process.env.PORT;
-const ENVIRONMENT = process.env.ENVIRONMENT;
-
 export default {
-    LOG_FILE,
-    APP_NAME,
-    PORT,
-    ENVIRONMENT
+    APP_NAME: process.env.APP_NAME,
+    PORT: process.env.PORT,
+    ENVIRONMENT: process.env.ENVIRONMENT,
+    LOG_LEVEL: process.env.LOG_LEVEL,
+
+    MONGO_DB_PORT: process.env.MONGO_DB_PORT,
+    MONGO_DB_NAME: process.env.MONGO_DB_NAME,
+    MONGO_DB_USER: process.env.MONGO_DB_USER,
+    MONGO_DB_PASSWORD: process.env.MONGO_DB_PASSWORD,
+
+    ATLAS_USER: process.env.ATLAS_USER,
+    ATLAS_PASSWORD: process.env.ATLAS_PASSWORD,
+    ATLAS_CLUSTER: process.env.ATLAS_CLUSTER,
+    ATLAS_OPTIONS: process.env.ATLAS_OPTIONS
 }
