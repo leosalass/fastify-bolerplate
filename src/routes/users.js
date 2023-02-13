@@ -3,14 +3,18 @@
 import { UserController } from "../app/Controllers/UserController.js";
 const userController = new UserController();
 
-export default function (fastify, opts, next) {
-  fastify.post('/users', {
+export default function (app, opts, next) {
+  app.post('/users', {
     handler: userController.create
   });
 
-  fastify.get('/users', {
-    //preValidation: fastify.auth([fastify.verifyJWT]),
+  app.get('/users', {
     handler: userController.list
+  });
+
+  app.patch('/users', {
+    //preValidation: fastify.auth([fastify.verifyJWT]),
+    handler: userController.update
   });
 
   next();

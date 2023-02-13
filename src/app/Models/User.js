@@ -31,6 +31,11 @@ userSchema.statics.getUsers = async function() {
   return users;
 };
 
+userSchema.statics.updateUser = async function(userData) {
+  const users = await this.findOneAndUpdate({ email: userData.email }, userData, { new: true });
+  return users;
+};
+
 const User = mongoose.model("User", userSchema);
 
 export default User;

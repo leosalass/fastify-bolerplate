@@ -20,4 +20,13 @@ export class UserController {
       reply.status(400).send(error);
     }
   }
+
+  async update(req, replay) {
+    try {
+      const user = await User.updateUser(req.body);
+      replay.status(201).send(user);
+    } catch (error) {
+      replay.status(400).send(error);
+    }
+  }
 }
