@@ -1,5 +1,5 @@
 # ISC License (ISC)
-Copyright (c) 2022 Leonardo Fabio Salas Sarmiento, leosalass@gmail.com
+Copyright (c) 2023 Leonardo Fabio Salas Sarmiento, leosalass@gmail.com
 
 Se otorga permiso para utilizar, copiar, modificar y/o distribuir este software con cualquier propósito, con o sin cargo. El aviso de copyright anterior y este aviso de permiso deben aparecer en todas las copias.
 
