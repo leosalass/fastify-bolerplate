@@ -1,3 +1,5 @@
+<img src="https://immersioninteractive.com/wp-content/uploads/2022/03/immersion-interactive-logo-fullmdpi.png" alt="Immersion Interactive">
+
 # API de Usuario en Fastify.js
 Este es un proyecto de una API de usuario construido con Fastify.js y conectado a MongoDB, ya sea localmente o en Atlas. Actualmente, el proyecto incluye funcionalidad básica CRUD para usuarios. En el futuro, se planea implementar la validación de correo electrónico, la validación de número telefónico y la autenticación de dos factores (2FA).
 
