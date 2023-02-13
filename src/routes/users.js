@@ -17,5 +17,10 @@ export default function (app, opts, next) {
     handler: userController.update
   });
 
+  app.delete('/users/:email', {
+    //preValidation: fastify.auth([fastify.verifyJWT]),
+    handler: userController.delete
+  });
+
   next();
 }

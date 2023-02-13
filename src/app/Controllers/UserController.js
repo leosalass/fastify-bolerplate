@@ -29,4 +29,13 @@ export class UserController {
       replay.status(400).send(error);
     }
   }
+
+  async delete(req, replay) {
+    try {
+      await User.deleteUser(req.params.email);
+      replay.status(201).send({ message: 'User successfully deleted' });
+    } catch (error) {
+      replay.status(400).send(error);
+    }
+  }
 }

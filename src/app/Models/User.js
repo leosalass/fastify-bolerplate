@@ -36,6 +36,10 @@ userSchema.statics.updateUser = async function(userData) {
   return users;
 };
 
+userSchema.statics.deleteUser = async function(email) {
+  return await this.deleteOne({ email: email });
+};
+
 const User = mongoose.model("User", userSchema);
 
 export default User;
