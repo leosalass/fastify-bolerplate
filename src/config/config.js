@@ -9,10 +9,38 @@ import fastifyPrintRoutes from 'fastify-print-routes'
 import authRoutes from  '../routes/auth.js';
 import userRoutes from  '../routes/users.js';
 
+import fastifyJWT from '@fastify/jwt';
+import fastifyCookie from '@fastify/cookie';
+import fastifyBcrypt from 'fastify-bcrypt';
+import fastifySession from '@fastify/session';
+
 export async function set(app, env) {
   Helper.set(app, env);
   Cors.set(app);
   Mongoose.set(app);
+
+  // Register fastify-bcrypt plugin
+  app.register(fastifyBcrypt, {
+    /* The salt work factor for the bcrypt algorithm. The default value is 10 */
+    saltWorkFactor: 12
+  })
+
+  // Register fastify-cookie plugin
+  app.register(fastifyCookie);
+
+  // Register fastify-jwt plugin
+  app.register(fastifyJWT, {
+    secret: app.env.JWT_SECRET
+  });
+
+  // Register fastify-session plugin
+  app.register(fastifySession, {
+    secret: app.env.SESSION_SECRET,
+    cookie: {
+      secure: true
+    }
+  });
+
   app.register(fastifyMultipart);
   app.register(fastifyPrintRoutes)
   app.register(authRoutes, { prefix: '/api/v1/auth' });
