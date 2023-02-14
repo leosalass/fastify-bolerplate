@@ -5,6 +5,10 @@ import User from "../Models/User.js";
 export class UserController {
   async list(req, reply) {
     try {
+
+      // Verify JWT token
+      await request.jwtVerify();
+
       const users = await User.list();
       reply.send(users);
     } catch (error) {
@@ -14,6 +18,9 @@ export class UserController {
 
   async update(request, reply) {
     try {
+      // Verify JWT token
+      await request.jwtVerify();
+
       const user = await User.update(request.body);
       reply.status(201).send(user);
     } catch (error) {
@@ -23,6 +30,9 @@ export class UserController {
 
   async delete(request, reply) {
     try {
+      // Verify JWT token
+      await request.jwtVerify();
+
       await User.delete(request.params.email);
       reply.status(201).send({ message: 'User successfully deleted' });
     } catch (error) {
