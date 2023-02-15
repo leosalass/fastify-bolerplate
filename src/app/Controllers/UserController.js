@@ -3,30 +3,50 @@
 import User from "../Models/User.js";
 
 export class UserController {
-  async list(req, reply) {
+
+  constructor(app) {
+    this.app = app;
+  }
+
+  async list(request, reply) {
     try {
-      const users = await User.getUsers();
+      // Verify JWT token
+      await request.jwtVerify();
+
+      const users = await User.list();
       reply.send(users);
     } catch (error) {
       reply.status(400).send(error);
     }
   }
 
-  async update(req, replay) {
+  async update(request, reply) {
     try {
-      const user = await User.updateUser(req.body);
-      replay.status(201).send(user);
+      // Verify JWT token
+      await request.jwtVerify();
+
+      const user = await User.update(request);
+      reply.status(201).send(user);
     } catch (error) {
-      replay.status(400).send(error);
+      reply.status(400).send(error);
     }
   }
 
-  async delete(req, replay) {
+  async delete(request, reply) {
     try {
-      await User.deleteUser(req.params.email);
-      replay.status(201).send({ message: 'User successfully deleted' });
+      // Verify JWT token
+      await request.jwtVerify();
+
+      const token = request.jwtToekn;
+      await User.delete(request.user.email);
+
+      /**
+       * TODO: implement a token remoke
+       */
+
+      reply.status(201).send({ message: 'User successfully deleted' });
     } catch (error) {
-      replay.status(400).send(error);
+      reply.status(400).send(error);
     }
   }
 }
