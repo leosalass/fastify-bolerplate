@@ -68,13 +68,14 @@ userSchema.statics.list = async function () {
   return users;
 };
 
-userSchema.statics.update = async function (userData) {
-  const users = await this.findOneAndUpdate(
-    { email: userData.email },
-    userData,
+userSchema.statics.update = async function (request) {
+  const { username } = request.body;
+  const user = await this.findOneAndUpdate(
+    { email: request.user.email },
+    {username},
     { new: true }
   );
-  return users;
+  return user;
 };
 
 userSchema.statics.delete = async function (email) {

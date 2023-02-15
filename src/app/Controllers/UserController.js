@@ -3,7 +3,7 @@
 import User from "../Models/User.js";
 
 export class UserController {
-  async list(req, reply) {
+  async list(request, reply) {
     try {
 
       // Verify JWT token
@@ -21,7 +21,7 @@ export class UserController {
       // Verify JWT token
       await request.jwtVerify();
 
-      const user = await User.update(request.body);
+      const user = await User.update(request);
       reply.status(201).send(user);
     } catch (error) {
       reply.status(400).send(error);
