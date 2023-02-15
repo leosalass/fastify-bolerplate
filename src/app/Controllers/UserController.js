@@ -3,9 +3,13 @@
 import User from "../Models/User.js";
 
 export class UserController {
+
+  constructor(app) {
+    this.app = app;
+  }
+
   async list(request, reply) {
     try {
-
       // Verify JWT token
       await request.jwtVerify();
 
@@ -33,7 +37,13 @@ export class UserController {
       // Verify JWT token
       await request.jwtVerify();
 
-      await User.delete(request.params.email);
+      const token = request.jwtToekn;
+      await User.delete(request.user.email);
+
+      /**
+       * TODO: implement a token remoke
+       */
+
       reply.status(201).send({ message: 'User successfully deleted' });
     } catch (error) {
       reply.status(400).send(error);
