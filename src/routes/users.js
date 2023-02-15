@@ -1,9 +1,10 @@
 "use strict";
 
 import { UserController } from "../app/Controllers/UserController.js";
-const userController = new UserController();
 
-export default function (app, opts, next) {
+export default function (app, opts, next)
+{
+  const userController = new UserController(app);
 
   app.get('', {
     handler: userController.list
@@ -14,7 +15,7 @@ export default function (app, opts, next) {
     handler: userController.update
   });
 
-  app.delete('/:email', {
+  app.delete('', {
     //preValidation: fastify.auth([fastify.verifyJWT]),
     handler: userController.delete
   });
