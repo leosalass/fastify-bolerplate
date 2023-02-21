@@ -6,6 +6,7 @@ import * as Mongoose from '../config/mongoose-config.js';
 import * as Favicon from './favicon-config.js';
 import fastifyMultipart from '@fastify/multipart'
 import fastifyPrintRoutes from 'fastify-print-routes'
+import AuthHook from  '../hooks/AuthHook.js';
 import authRoutes from  '../routes/auth.js';
 import userRoutes from  '../routes/users.js';
 
@@ -18,11 +19,6 @@ export async function set(app, env) {
   Helper.set(app, env);
   Cors.set(app);
   Mongoose.set(app);
-
-  // Register fastify-bcrypt plugin
-  /*app.register(fastifyBcrypt, {
-    saltWorkFactor: 12
-  })*/
 
   // Register fastify-cookie plugin
   app.register(fastifyCookie);
@@ -49,6 +45,9 @@ export async function set(app, env) {
   //Register the routes
   app.register(authRoutes, { prefix: '/api/v1/auth' });
   app.register(userRoutes, { prefix: '/api/v1/users' });
+
+  const authHok = new AuthHook();
+  app.addHook('onRequest', authHok.validateSessionCookie);
 
   Favicon.set(app);
 }
