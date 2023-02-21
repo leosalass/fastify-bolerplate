@@ -25,6 +25,7 @@ export class AuthController {
         reply.status(401).send({
           error: "Invalid credentials",
         });
+        return;
       }
 
       // Generate JWT token
@@ -33,8 +34,17 @@ export class AuthController {
         name: response.user.name,
       });
 
+      /**
+       * TODO: store the token with an active status
+       */
+
       // Return JWT token to client
-      reply.status(201).send({ token });
+      reply.setCookie('api-auth', token, {
+        secure: false,
+        httpOnly: true,
+        maxAge: 3600,//1 hour
+      }).status(201).send({ message: 'Logged in successfully!' });
+      //reply.status(201).send({ token });
     } catch (error) {
       reply.status(400).send(error);
     }
