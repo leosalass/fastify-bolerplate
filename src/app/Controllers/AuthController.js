@@ -25,6 +25,7 @@ export class AuthController {
         reply.status(401).send({
           error: "Invalid credentials",
         });
+        return;
       }
 
       // Generate JWT token

@@ -37,12 +37,15 @@ userSchema.statics.login = async function (userData) {
 
   const user = await User.findOne({ email });
 
-  // Compare password with hashed password from database
-  const isValid = await bcrypt.compare(password, user.password);
 
   let response = {
     authenticate: false,
   };
+
+  if(!user) return response;
+
+  // Compare password with hashed password from database
+  const isValid = await bcrypt.compare(password, user.password);
 
   if (!isValid) {
     return response;
