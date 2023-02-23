@@ -53,7 +53,7 @@ userSchema.statics.login = async function (userData) {
 
   response.authenticate = true;
   response.user = {
-    id: user._id,
+    id: user._id.toString(),
     email: user.email,
     name: user.name,
   };
@@ -83,9 +83,9 @@ userSchema.statics.update = async function (request) {
 };
 
 userSchema.statics.delete = async function (email) {
-  return await this.deleteOne({ email: email }, function (err) {
+  /*return await this.deleteOne({ email: email }, function (err) {
     if (err) return handleError(err);
-  });
+  });*/
 };
 
 const User = mongoose.model("User", userSchema);
