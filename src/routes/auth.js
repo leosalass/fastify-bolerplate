@@ -13,5 +13,9 @@ export default function (app, opts, next) {
     handler: authController.login
   });
 
+  app.delete('/logout', {
+    handler: authController.logout
+  });
+
   next();
 }

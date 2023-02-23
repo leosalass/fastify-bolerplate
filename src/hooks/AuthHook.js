@@ -1,16 +1,16 @@
 "use strict";
 
-export default class AuthHook {
-  validateSessionCookie(request, reply, next) {
-    // Use Fastify's match function to check if the request URL matches
+import UserToken from "../app/Models/UserToken.js";
 
+export default class AuthHook {
+  async validateSessionCookie(request, reply) {
     /**
-     * *exclude all routes starting with api/v1/auth
+     * Regular expression pattern to match any route inside
+     * api/v1/auth/ or /api/v1/auth/, except for the logout
      */
-    const authRoutesPattern = /^\/?(api\/v1\/auth\/)(.*)$/i;
+    const authRoutesPattern = /^\/?(api\/v1\/auth\/(?!logout)[^\/]+)\/?$/i;
     if (authRoutesPattern.test(request.url)) {
-      //console.log("public:", request.method, request.url);
-      return next();
+      return;
     }
 
     const token = request.cookies["api-auth"];
@@ -19,13 +19,13 @@ export default class AuthHook {
       return;
     }
 
-    // Verify JWT token
-    if (this.jwt.verify(token)) {
-      /**
-       * TODO: validate the black list tokens here
-       */
-      //console.log("auth:", request.method, request.url);
-      next();
+    // Decode the userId from the JWT
+    const { userId } = this.jwt.verify(token);
+
+    // Validate JWT
+    if (!(await UserToken.validate(userId, token))) {
+      reply.status(401).send("Unauthorized");
+      return;
     }
   }
 }
