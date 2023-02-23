@@ -1,6 +1,7 @@
 "use strict";
 
 import User from "../Models/User.js";
+import UserToken from "../Models/UserToken.js";
 
 export class AuthController {
 
@@ -28,6 +29,8 @@ export class AuthController {
         return;
       }
 
+      console.log(response)
+
       // Generate JWT token
       const token = this.jwt.sign({
         email: response.user.email,
@@ -35,8 +38,13 @@ export class AuthController {
       });
 
       /**
-       * TODO: store the token with an active status
+       * *We only will store one active token for each user
+       * the reason is i do not want to have many tokens in the db,
+       * maybe you want to keep the tokens history, its you call
+       * also you could want to enable more than one active token by user,
+       * But i dont have that requirement for this basic boilerplate
        */
+      await UserToken.register({ userId: response.user.id, token })
 
       // Return JWT token to client
       reply.setCookie('api-auth', token, {

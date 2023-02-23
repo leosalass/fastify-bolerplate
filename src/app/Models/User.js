@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-});
+},{ timestamps: true });
 
 /**
  * The pre hook is used to hash the password before saving the user to the database.
@@ -53,6 +53,7 @@ userSchema.statics.login = async function (userData) {
 
   response.authenticate = true;
   response.user = {
+    id: user._id,
     email: user.email,
     name: user.name,
   };
