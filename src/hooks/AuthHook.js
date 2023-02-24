@@ -8,7 +8,7 @@ export default class AuthHook {
      * Regular expression pattern to match any route inside
      * api/v1/auth/ or /api/v1/auth/, except for the logout
      */
-    const authRoutesPattern = /^\/?(api\/v1\/auth\/(?!logout)[^\/]+)\/?$/i;
+    const authRoutesPattern = /^\/?(api\/v1\/auth\/(?!logout|keep-alive)[^\/]+)\/?$/i;
     if (authRoutesPattern.test(request.url)) {
       return;
     }

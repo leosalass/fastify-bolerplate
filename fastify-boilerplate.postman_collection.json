@@ -22,14 +22,11 @@
 									"raw": "{\r\n    \"username\": \"leonardo salas\",\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
 								},
 								"url": {
-									"raw": "localhost:3100/api/v1/auth/register",
+									"raw": "{{SERVER-API}}/auth/register",
 									"host": [
-										"localhost"
+										"{{SERVER-API}}"
 									],
-									"port": "3100",
 									"path": [
-										"api",
-										"v1",
 										"auth",
 										"register"
 									]
@@ -58,14 +55,11 @@
 									"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
 								},
 								"url": {
-									"raw": "localhost:3100/api/v1/auth/login",
+									"raw": "{{SERVER-API}}/auth/login",
 									"host": [
-										"localhost"
+										"{{SERVER-API}}"
 									],
-									"port": "3100",
 									"path": [
-										"api",
-										"v1",
 										"auth",
 										"login"
 									]
@@ -90,17 +84,14 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
+									"raw": "{\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
 								},
 								"url": {
-									"raw": "localhost:3100/api/v1/auth/logout",
+									"raw": "{{SERVER-API}}/auth/logout",
 									"host": [
-										"localhost"
+										"{{SERVER-API}}"
 									],
-									"port": "3100",
 									"path": [
-										"api",
-										"v1",
 										"auth",
 										"logout"
 									]
@@ -152,14 +143,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3100/api/v1/users",
+									"raw": "{{SERVER-API}}/users",
 									"host": [
-										"localhost"
+										"{{SERVER-API}}"
 									],
-									"port": "3100",
 									"path": [
-										"api",
-										"v1",
 										"users"
 									]
 								}
@@ -176,14 +164,11 @@
 									"raw": "{\r\n    \"username\": \"alexander salas sarmiento\"\r\n}"
 								},
 								"url": {
-									"raw": "localhost:3100/api/v1/users",
+									"raw": "{{SERVER-API}}/users",
 									"host": [
-										"localhost"
+										"{{SERVER-API}}"
 									],
-									"port": "3100",
 									"path": [
-										"api",
-										"v1",
 										"users"
 									]
 								}
@@ -196,14 +181,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3100/api/v1/users",
+									"raw": "{{SERVER-API}}/users",
 									"host": [
-										"localhost"
+										"{{SERVER-API}}"
 									],
-									"port": "3100",
 									"path": [
-										"api",
-										"v1",
 										"users"
 									]
 								}
@@ -211,21 +193,6 @@
 							"response": []
 						}
 					],
-					"auth": {
-						"type": "apikey",
-						"apikey": [
-							{
-								"key": "value",
-								"value": "api-auth={{auth_token}}",
-								"type": "string"
-							},
-							{
-								"key": "key",
-								"value": "Cookie",
-								"type": "string"
-							}
-						]
-					},
 					"event": [
 						{
 							"listen": "prerequest",
@@ -248,6 +215,21 @@
 					]
 				}
 			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "key",
+						"value": "Cookie",
+						"type": "string"
+					},
+					{
+						"key": "value",
+						"value": "api-auth={{auth_token}}",
+						"type": "string"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
