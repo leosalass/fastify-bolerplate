@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "7d0f8cea-984e-4df4-a555-c9bb883b1588",
+		"name": "fastify-boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "299255"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "auth register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"leonardo salas\",\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{SERVER-API}}/auth/register",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{SERVER-API}}/auth/login",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authenticated",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "auth logout",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{SERVER-API}}/auth/logout",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth keep alive",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"keep-alive\": 1}"
+								},
+								"url": {
+									"raw": "{{SERVER-API}}/auth/keep-alive",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"auth",
+										"keep-alive"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "List users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SERVER-API}}/users",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update user",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"alexander salas sarmiento\"\r\n}"
+								},
+								"url": {
+									"raw": "{{SERVER-API}}/users",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete user",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{SERVER-API}}/users",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "key",
+						"value": "Cookie",
+						"type": "string"
+					},
+					{
+						"key": "value",
+						"value": "api-auth={{auth_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var cookieHeader = pm.response.headers.get('set-cookie');",
+							"if (cookieHeader) {",
+							"  var match = cookieHeader.match(/api-auth=([^;]+)/);",
+							"  if (match) {",
+							"    var token = match[1];",
+							"    pm.environment.set('auth_token', token);",
+							"  }",
+							"}"
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "application/json",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Content-Type",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var cookieHeader = pm.response.headers.get('set-cookie');",
+					"if (cookieHeader) {",
+					"  var match = cookieHeader.match(/api-auth=([^;]+)/);",
+					"  if (match) {",
+					"    var token = match[1];",
+					"    pm.environment.set('auth_token', token);",
+					"  }",
+					"}"
+				]
+			}
+		}
+	]
+}

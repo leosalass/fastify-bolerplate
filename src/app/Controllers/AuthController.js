@@ -29,28 +29,20 @@ export class AuthController {
         return;
       }
 
-      console.log(response.user.id)
-
       // Generate JWT token
       const token = this.jwt.sign({
         userId: response.user.id,
         email: response.user.email,
       });
 
-      /**
-       * *We only will store one active token for each user
-       * the reason is i do not want to have many tokens in the db,
-       * maybe you want to keep the tokens history, its you call
-       * also you could want to enable more than one active token by user,
-       * But i dont have that requirement for this basic boilerplate
-       */
-      await UserToken.register({ userId: response.user.id, token })
+      await UserToken.register({ userId: response.user.id, token, expiresIn: `${this.env.INACTIVITY_TIME}m` })
 
       // Return JWT token to client
       reply.setCookie('api-auth', token, {
         secure: false,
         httpOnly: true,
-        maxAge: 3600 * 5,//5 hours
+        maxAge: this.env.INACTIVITY_TIME * 60
+
       }).status(200).send({ message: 'Logged in successfully!' });
     } catch (error) {
       reply.status(400).send(error);
@@ -66,5 +58,9 @@ export class AuthController {
     } catch (error) {
       reply.status(400).send(error);
     }
+  }
+
+  async keepAlive(request, reply) {
+    reply.status(200).send();
   }
 }

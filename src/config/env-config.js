@@ -31,5 +31,7 @@ export default {
     ATLAS_USER: process.env.ATLAS_USER,
     ATLAS_PASSWORD: process.env.ATLAS_PASSWORD,
     ATLAS_CLUSTER: process.env.ATLAS_CLUSTER,
-    ATLAS_OPTIONS: process.env.ATLAS_OPTIONS
+    ATLAS_OPTIONS: process.env.ATLAS_OPTIONS,
+
+    INACTIVITY_TIME: process.env.INACTIVITY_TIME
 }
