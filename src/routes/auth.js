@@ -17,5 +17,9 @@ export default function (app, opts, next) {
     handler: authController.logout
   });
 
+  app.post('/keep-alive', {
+    handler: authController.keepAlive
+  });
+
   next();
 }

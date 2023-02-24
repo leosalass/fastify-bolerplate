@@ -59,4 +59,8 @@ export class AuthController {
       reply.status(400).send(error);
     }
   }
+
+  async keepAlive(request, reply) {
+    reply.status(200).send();
+  }
 }
