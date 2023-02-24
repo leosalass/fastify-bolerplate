@@ -20,12 +20,19 @@ export default class AuthHook {
     }
 
     // Decode the userId from the JWT
-    const { userId } = this.jwt.verify(token);
+    try {
+      const { userId } = this.jwt.verify(token);
+    } catch (e) {
+      reply.status(401).send("Unauthorized");
+      return;
+    }
 
     // Validate JWT
     if (!(await UserToken.validate(userId, token))) {
       reply.status(401).send("Unauthorized");
       return;
     }
+
+    console.log({userId, token})
   }
 }
