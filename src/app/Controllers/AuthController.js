@@ -29,8 +29,6 @@ export class AuthController {
         return;
       }
 
-      console.log(response.user.id)
-
       // Generate JWT token
       const token = this.jwt.sign({
         userId: response.user.id,
@@ -50,7 +48,8 @@ export class AuthController {
       reply.setCookie('api-auth', token, {
         secure: false,
         httpOnly: true,
-        maxAge: 3600 * 5,//5 hours
+        maxAge: this.env.INACTIVITY_TIME * 60
+
       }).status(200).send({ message: 'Logged in successfully!' });
     } catch (error) {
       reply.status(400).send(error);
