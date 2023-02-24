@@ -35,14 +35,7 @@ export class AuthController {
         email: response.user.email,
       });
 
-      /**
-       * *We only will store one active token for each user
-       * the reason is i do not want to have many tokens in the db,
-       * maybe you want to keep the tokens history, its you call
-       * also you could want to enable more than one active token by user,
-       * But i dont have that requirement for this basic boilerplate
-       */
-      await UserToken.register({ userId: response.user.id, token })
+      await UserToken.register({ userId: response.user.id, token, expiresIn: `${this.env.INACTIVITY_TIME}m` })
 
       // Return JWT token to client
       reply.setCookie('api-auth', token, {
