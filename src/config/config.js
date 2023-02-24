@@ -25,7 +25,10 @@ export async function set(app, env) {
 
   // Register fastify-jwt plugin
   app.register(fastifyJWT, {
-    secret: app.env.JWT_SECRET
+    secret: app.env.JWT_SECRET,
+    sign: {
+      expiresIn: `${app.env.INACTIVITY_TIME}m`
+    }
   });
 
   // Register fastify-session plugin
