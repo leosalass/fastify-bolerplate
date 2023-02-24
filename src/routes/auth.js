@@ -17,6 +17,10 @@ export default function (app, opts, next) {
     handler: authController.logout
   });
 
+  app.patch('/update-password', {
+    handler: authController.updatePassword
+  });
+
   app.post('/keep-alive', {
     handler: authController.keepAlive
   });

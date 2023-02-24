@@ -3,11 +3,14 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  password: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-},{ timestamps: true });
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+  },
+  { timestamps: true }
+);
 
 /**
  * The pre hook is used to hash the password before saving the user to the database.
@@ -37,12 +40,11 @@ userSchema.statics.login = async function (userData) {
 
   const user = await User.findOne({ email });
 
-
   let response = {
     authenticate: false,
   };
 
-  if(!user) return response;
+  if (!user) return response;
 
   // Compare password with hashed password from database
   const isValid = await bcrypt.compare(password, user.password);
@@ -72,11 +74,32 @@ userSchema.statics.list = async function () {
   return users;
 };
 
+userSchema.statics.updatePassword = async function (
+  userId,
+  oldPassword,
+  newPassword
+) {
+  const user = await this.findById(userId);
+
+  //oldPassword = bcrypt.hash(oldPassword, 10)
+  console.log({ userId, oldPassword, password: user.password });
+
+  // Compare password with hashed password from database
+  const isValid = await bcrypt.compare(oldPassword, user.password);
+  console.log({ isValid });
+  if (!isValid) throw new Error();
+
+  user.password = newPassword;
+  await user.save();
+
+  return user;
+};
+
 userSchema.statics.update = async function (request) {
   const { username } = request.body;
   const user = await this.findOneAndUpdate(
     { email: request.user.email },
-    {username},
+    { username },
     { new: true }
   );
   return user;
