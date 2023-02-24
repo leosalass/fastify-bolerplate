@@ -16,7 +16,13 @@
 							"name": "auth register",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"username\": \"leonardo salas\",\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
@@ -49,7 +55,13 @@
 							],
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
@@ -81,7 +93,13 @@
 							"name": "auth logout",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"email\": \"leosalass@gmail.com\"\r\n}\r\n"
@@ -103,7 +121,13 @@
 							"name": "auth keep alive",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\"keep-alive\": 1}"
@@ -120,6 +144,54 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "auth update password",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"123456789\",\r\n    \"newPassword\": \"123456789\"\r\n}"
+								},
+								"url": {
+									"raw": "{{SERVER-API}}/auth/update-password",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"auth",
+										"update-password"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					]
 				},
@@ -141,7 +213,13 @@
 							],
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{SERVER-API}}/users",
 									"host": [
@@ -158,7 +236,13 @@
 							"name": "update user",
 							"request": {
 								"method": "PATCH",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"username\": \"alexander salas sarmiento\"\r\n}"
@@ -179,7 +263,13 @@
 							"name": "delete user",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{SERVER-API}}/users",
 									"host": [
@@ -263,13 +353,18 @@
 		"type": "apikey",
 		"apikey": [
 			{
-				"key": "value",
-				"value": "application/json",
+				"key": "in",
+				"value": "header",
 				"type": "string"
 			},
 			{
 				"key": "key",
 				"value": "Content-Type",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "application/json",
 				"type": "string"
 			}
 		]

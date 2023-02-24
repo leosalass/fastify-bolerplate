@@ -60,6 +60,17 @@ export class AuthController {
     }
   }
 
+  async updatePassword(request, reply) {
+    try {
+      const token = request.cookies["api-auth"];
+      const { userId } = await this.jwt.verify(token);
+      const { oldPassword, newPassword } = request.body;
+      await User.updatePassword(userId, oldPassword, newPassword);
+    } catch (error) {
+      reply.status(401).send(error);
+    }
+  }
+
   async keepAlive(request, reply) {
     reply.status(200).send();
   }
