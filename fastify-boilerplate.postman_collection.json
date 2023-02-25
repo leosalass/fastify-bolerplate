@@ -119,8 +119,11 @@
 						},
 						{
 							"name": "auth keep alive",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "Content-Type",
@@ -130,7 +133,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"keep-alive\": 1}"
+									"raw": ""
 								},
 								"url": {
 									"raw": "{{SERVER-API}}/auth/keep-alive",
