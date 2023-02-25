@@ -105,10 +105,9 @@ userSchema.statics.update = async function (request) {
   return user;
 };
 
-userSchema.statics.delete = async function (email) {
-  return await this.deleteOne({ email: email }, function (err) {
-    if (err) return handleError(err);
-  });
+userSchema.statics.delete = async function (userId) {
+  const user = await this.findById(userId);
+  user.delete();
 };
 
 const User = mongoose.model("User", userSchema);
