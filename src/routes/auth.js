@@ -21,7 +21,7 @@ export default function (app, opts, next) {
     handler: authController.updatePassword
   });
 
-  app.post('/keep-alive', {
+  app.get('/keep-alive', {
     handler: authController.keepAlive
   });
 
