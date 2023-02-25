@@ -1,6 +1,7 @@
 "use strict";
 
 import User from "../Models/User.js";
+import UserToken from "../Models/UserToken.js";
 
 export class UserController {
   constructor(jwt) {
@@ -27,14 +28,11 @@ export class UserController {
 
   async delete(request, reply) {
     try {
-      const token = request.jwtToekn;
-      await User.delete(request.user.email);
-
-      /**
-       * TODO: black list this token, maybe we can just add all the new tokens to the db and then we could remove the tokens we want to balck list, in that case only existing tokens will pass the validation
-       */
-
-      reply.status(201).send({ message: "User successfully deleted" });
+      const token = request.cookies["api-auth"];
+      const { userId } = await this.jwt.verify(token);
+      await User.delete(userId);
+      await UserToken.invalidate(userId);
+      reply.status(200).send();
     } catch (error) {
       reply.status(400).send(error);
     }
