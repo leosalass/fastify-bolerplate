@@ -10,6 +10,10 @@ export default function (app, opts, next)
     handler: userController.list
   });
 
+  app.get('/current', {
+    handler: userController.current
+  });
+
   app.patch('', {
     handler: userController.update
   });

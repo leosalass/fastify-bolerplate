@@ -284,6 +284,41 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "current",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{SERVER-API}}/users/current",
+									"host": [
+										"{{SERVER-API}}"
+									],
+									"path": [
+										"users",
+										"current"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"event": [

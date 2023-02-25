@@ -74,6 +74,11 @@ userSchema.statics.list = async function () {
   return users;
 };
 
+userSchema.statics.current = async function (userId) {
+  const user = await this.findById(userId);
+  return user;
+};
+
 userSchema.statics.updatePassword = async function (
   userId,
   oldPassword,
