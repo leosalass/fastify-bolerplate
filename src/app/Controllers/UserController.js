@@ -17,6 +17,17 @@ export class UserController {
     }
   }
 
+  async current(request, reply) {
+    try {
+      const token = request.cookies["api-auth"];
+      const { userId } = await this.jwt.verify(token);
+      const user = await User.current(userId);
+      reply.send(user);
+    } catch (error) {
+      reply.status(400).send(error);
+    }
+  }
+
   async update(request, reply) {
     try {
       const user = await User.update(request);

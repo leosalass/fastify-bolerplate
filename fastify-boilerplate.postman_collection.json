@@ -308,13 +308,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{SERVER-API}}/users/curren",
+									"raw": "{{SERVER-API}}/users/current",
 									"host": [
 										"{{SERVER-API}}"
 									],
 									"path": [
 										"users",
-										"curren"
+										"current"
 									]
 								}
 							},
