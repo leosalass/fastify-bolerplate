@@ -3,7 +3,8 @@ import cors from '@fastify/cors';
 
 export function set(app){
     app.register(cors, {
-    origin: '*',
+    origin: true,
+    credentials: true,
 
     /**
      * *By default, @fastify/cors adds a onRequest hook where the validation
